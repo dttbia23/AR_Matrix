@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 685743964}
   - component: {fileID: 685743963}
   m_Layer: 5
-  m_Name: Ending Stats 1
+  m_Name: Ending Stats 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f7dd5bf82772caa449e4aa7847729cbf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 464255c1ae4179c45a1fd3ab4e22af10, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -642,10 +642,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1981110671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 28.400024, y: -506.8}
-  m_SizeDelta: {x: 739.19995, y: 100.8}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 569.8, y: -506.8}
+  m_SizeDelta: {x: 641.2, y: 100.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325542214
 MonoBehaviour:
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uD654\uC758 \uC804\uC124\uC774 \uB418\uC5C8\uB2E4!"
+  m_text: "\uADF8\uB7ED\uC800\uB7ED \uC878\uC5C5\uD588\uB2E4!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6da1b98956e7f804cbbfec253b977cf4, type: 2}
   m_sharedMaterial: {fileID: -2055731747450391665, guid: 6da1b98956e7f804cbbfec253b977cf4, type: 2}
