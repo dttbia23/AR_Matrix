@@ -26,8 +26,9 @@ public class GameManager : MonoBehaviour
                 if (instance == null)
                 {
                     GameObject go = new GameObject();
-                    go.name = "SingletonController";
+                    go.name = "GameManager";
                     instance = go.AddComponent<GameManager>();
+                    instance.gameObject.AddComponent<LoadScene>(); // 씬 로드 기능도 가지고 있기
                     DontDestroyOnLoad(go);
                 }
             }
