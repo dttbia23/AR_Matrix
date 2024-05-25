@@ -51,7 +51,14 @@ public class GameManager : MonoBehaviour
     public Status playerStatus;
 
 
-
+    /// <summary>
+    /// 미션 코드 설정하기 (AR 인증 화면으로 이동 시에 호출)
+    /// </summary>
+    /// <param name="code"></param>
+    public void SetMissionCode(string code)
+    {
+        nowMissionCode = code;
+    }
 
     #region Status Up and Down
     /// <summary>
