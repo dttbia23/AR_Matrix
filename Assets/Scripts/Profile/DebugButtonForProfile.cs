@@ -7,18 +7,19 @@ public class DebugButtonForProfile : MonoBehaviour
     [SerializeField] private ProfileManager profileManager;
     public void IntelligenceUp(int num)
     {
-        GameManager.Instance.playerData.status.intelligence += num;
-        profileManager.SetStatusProgressBar();
+        GameManager.Instance.playerData.status.Intelligence += num;
+        profileManager.RefreshUI();
     }
     public void AttractivenessUp(int num)
     {
-        GameManager.Instance.playerData.status.attractiveness += num;
-        profileManager.SetStatusProgressBar();
+        GameManager.Instance.playerData.status.Attractiveness += num;
+        profileManager.RefreshUI();
     }
     public void HealthUp(int num)
     {
-        GameManager.Instance.playerData.status.health += num;
-        profileManager.SetStatusProgressBar();
+        GameManager.Instance.playerData.status.Health += num;
+        // profileManager.SetStatusProgressBar();
+        profileManager.RefreshUI();
     }
 
     public void ResetPlayerData()

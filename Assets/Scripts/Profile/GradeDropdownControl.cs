@@ -17,8 +17,15 @@ public class GradeDropdownControl : MonoBehaviour
 
     void Start()
     {
+
+        UpdateDropdownList();
+
+    }
+
+    public void UpdateDropdownList()
+    {
         //현재 학년을 가져온다.
-        currentGrade = GameManager.Instance.playerData.status.grade;
+        currentGrade = GameManager.Instance.playerData.status.Grade;
 
         //드롭다운에 리스터 추가
         gradeDropdown.onValueChanged.AddListener(ShowClearMission);
@@ -42,8 +49,6 @@ public class GradeDropdownControl : MonoBehaviour
             gradeDropdown.value = 0;
             ShowClearMission(0);
         }
-
-
     }
 
 

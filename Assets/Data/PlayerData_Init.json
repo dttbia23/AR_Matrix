@@ -10,5 +10,11 @@
     "2학년": [],
     "3학년": [],
     "4학년": []
+  },
+  "mandatoryMission": {
+    "1학년": [false, false],
+    "2학년": [false, false],
+    "3학년": [false, false],
+    "4학년": [false, false]
   }
 }
