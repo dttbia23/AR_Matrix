@@ -17,6 +17,13 @@ public class GradeDropdownControl : MonoBehaviour
 
     void Start()
     {
+
+        UpdateDropdownList();
+
+    }
+
+    public void UpdateDropdownList()
+    {
         //현재 학년을 가져온다.
         currentGrade = GameManager.Instance.playerData.status.Grade;
 
@@ -42,8 +49,6 @@ public class GradeDropdownControl : MonoBehaviour
             gradeDropdown.value = 0;
             ShowClearMission(0);
         }
-
-
     }
 
 
@@ -60,7 +65,7 @@ public class GradeDropdownControl : MonoBehaviour
 
         string key = (optionIndex + 1).ToString() + "학년";
 
-        if (GameManager.Instance.playerData.ClearMissionList.TryGetValue(key, out List<string> clearMissionList))
+        if (GameManager.Instance.playerData.clearMissionList.TryGetValue(key, out List<string> clearMissionList))
         {
             foreach (string mission in clearMissionList)
             {

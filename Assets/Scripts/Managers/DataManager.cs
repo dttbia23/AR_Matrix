@@ -31,7 +31,7 @@ public static class DataManager
         filePath = Path.Combine(Application.persistentDataPath, playerDataFile);
 
         File.WriteAllText(filePath, toJsonData);
-        Debug.Log($"{filePath}에 playerData 저장 완료");
+        Debug.Log($"로컬에 playerData 저장 완료");
 
     }
 
@@ -43,12 +43,13 @@ public static class DataManager
         if (File.Exists(filePath))
         {
             string jsonString = File.ReadAllText(filePath);
+            Debug.Log("플레이어 데이터 불러오기");
 
             GameManager.Instance.playerData = JsonConvert.DeserializeObject<PlayerData>(jsonString);
         }
         else
         {
-            Debug.Log($"Can't find playerData : {filePath} -> InitializePlayerData() 호출");
+            Debug.Log($"로컬에 저장된 데이터 없음. 초기화 메소드 호출");
             InitializePlayerData();
         }
     }

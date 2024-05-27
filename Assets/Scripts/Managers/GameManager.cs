@@ -8,10 +8,10 @@ using UnityEngine;
 // 프로퍼티 생성
 public class Status
 {
-    private int grade;
-    private int intelligence;
-    private int attractiveness;
-    private int health;
+    [SerializeField] private int grade;
+    [SerializeField] private int intelligence;
+    [SerializeField] private int attractiveness;
+    [SerializeField] private int health;
 
     public int Grade
     {
@@ -34,7 +34,7 @@ public class Status
         get => intelligence;
         set
         {
-            int newValue = Mathf.Clamp(intelligence + value, 0, 100); //0~100 사이 값으로 제한
+            int newValue = Mathf.Clamp(value, 0, 100); //0~100 사이 값으로 제한
             if (intelligence != newValue)
             {
                 intelligence = newValue;
@@ -51,7 +51,7 @@ public class Status
         get => attractiveness;
         set
         {
-            int newValue = Mathf.Clamp(attractiveness + value, 0, 100);//0~100 사이 값으로 제한
+            int newValue = Mathf.Clamp(value, 0, 100);//0~100 사이 값으로 제한
             if (newValue != attractiveness)
             {
                 attractiveness = newValue;
@@ -67,7 +67,7 @@ public class Status
         get => health;
         set
         {
-            int newValue = Mathf.Clamp(health + value, 0, 100);//0~100 사이 값으로 제한
+            int newValue = Mathf.Clamp(value, 0, 100);//0~100 사이 값으로 제한
             if (health != newValue)
             {
                 health = newValue;
@@ -78,7 +78,9 @@ public class Status
         }
     }
 
-    // Status 변경 시 호출되는 이벤트
+    /// <summary>
+    /// Status 변경 시 호출되는 이벤트
+    /// </summary>
     public event Action OnStatusChanged;
 
 }
@@ -87,19 +89,18 @@ public class Status
 public class PlayerData
 {
     public Status status;
-    private Dictionary<string, List<string>> clearMissionList;
+    public Dictionary<string, List<string>> clearMissionList;
+    public Dictionary<string, bool[]> mandatoryMission;
 
-    // clearMissionList 프로퍼티: 읽기 전용
-    public Dictionary<string, List<string>> ClearMissionList
-    {
-        get => clearMissionList;
-    }
-
-    // PlayerData 변경 시 호출되는 이벤트
+    /// <summary>
+    /// PlayerData 변경 시 호출되는 이벤트
+    /// </summary>
     public event Action OnDataChanged;
 
 
-    // 생성자: Status 초기화 및 Status 변경 시 OnDataChanged 이벤트 호출하도록 설정
+    /// <summary>
+    /// 생성자: Status 초기화 및 Status 변경 시 OnDataChanged 이벤트 호출하도록 설정
+    /// </summary>
     public PlayerData()
     {
         status = new Status();
@@ -113,18 +114,25 @@ public class PlayerData
 
 
     /// <summary>
-    /// 플레이어가 수행한 미션 리스트를 PlayerData에 추가하는 메소드
+    /// 플레이어가 수행한 미션을 PlayerData의 clearMissionList에 추가,
+    /// 필수 미션이면 mandatoryMission에 반영하는 메소드
     /// </summary>
+    /// <param name="missionCode">수행한 미션 코드(string)</param> 
     /// <param name="grade">'n'학년의 n 값(int)</param>
-    /// <param name="missionName">수행한 미션 이름(string)</param> <summary>
-    /// 
-    /// </summary>
-    public void AddClearMission(int grade, string missionName)
+    /// <param name="missionLabel">수행한 미션 라벨(string)</param> 
+    public void AddClearMission(string missionCode, int grade, string missionLabel)
     {
         string key = grade.ToString() + "학년";
-        clearMissionList[key].Add(missionName);
+        if (missionCode.StartsWith("Main"))
+        {
+            int missionIndex = missionCode[missionCode.Length - 1] - '0' - 1;
+            mandatoryMission[key][missionIndex] = true;
+
+        }
+        clearMissionList[key].Add(missionLabel);
         OnDataChanged?.Invoke(); // 미션 리스트가 변경될 때 OnDataChanged 호출
     }
+
 
 }
 
@@ -164,11 +172,14 @@ public class GameManager : MonoBehaviour
 
 
         playerData = new PlayerData();
+        Debug.Log("GameManager Awake");
+        DataManager.LoadPlayerData();
     }
     #endregion
 
     public string nowMissionCode; // 현재 미션 정보
     public PlayerData playerData;
+
 
 
     /// <summary>
@@ -197,13 +208,38 @@ public class GameManager : MonoBehaviour
     }
     public void AttractivenessStatusUpDown(int num)
     {
-        Debug.Log($"매력 증/감 : {num}");
         playerData.status.Attractiveness += num;
     }
     public void HealthStatusUpDown(int num)
     {
-        Debug.Log($"건강 증/감 : {num}");
         playerData.status.Health += num;
     }
     #endregion
+
+
+
+    /// <summary>
+    /// 현재 필수 미션 리스트를 모두 수행했는지의 여부를 확인할 수 있는 메소드
+    /// </summary>
+    /// <returns>현재 학년의 필수 미션을 모두 클리어했다면 true, 아니면 false 반환</returns>
+    public bool IsCompleteAllMandatoryMissions()
+    {
+        string key = playerData.status.Grade + "학년";
+        if (playerData.mandatoryMission.TryGetValue(key, out bool[] currentMandatoryMissions))
+        {
+            foreach (bool flag in currentMandatoryMissions)
+            {
+                if (flag == false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
 }

@@ -33,7 +33,9 @@ public class ProfileManager : MonoBehaviour
 
 
     }
-
+    /// <summary>
+    /// 프로필 정보 업데이트(현재 학년 반영)
+    /// </summary>
     public void profileInfo()
     {
         profileInfoTxt.text = string.Format(profileInfoFormat, GameManager.Instance.playerData.status.Grade);
@@ -41,6 +43,9 @@ public class ProfileManager : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 스탯 수치에 따라 progress bar 설정
+    /// </summary>
     public void SetStatusProgressBar()
     {
         //status 수치 반영
@@ -49,6 +54,14 @@ public class ProfileManager : MonoBehaviour
         intelligenceProgressBar.value = GameManager.Instance.playerData.status.Intelligence;
     }
 
+    public void SetClearMissionList()
+    {
+        dropdown.GetComponentInParent<GradeDropdownControl>().UpdateDropdownList();
+    }
+
+    /// <summary>
+    /// 프로필 ui 전체 갱신
+    /// </summary>
     public void RefreshUI()
     {
         profileInfo();

@@ -36,6 +36,10 @@ public class LoadScene : MonoBehaviour
     {
         if (previousSceneName == null || previousSceneName == "")
         {
+            //=========임시 수정==============//
+            previousSceneName = "HomeScene";
+            StartCoroutine(LoadGameSceneAsync(previousSceneName));
+            //=============================//
             Debug.LogError("There is no previous scene");
         }
         else StartCoroutine(LoadGameSceneAsync(previousSceneName));

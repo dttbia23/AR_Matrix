@@ -11,6 +11,7 @@ public class Mission
 {
     public string code; // ex) Main1-2, Sub4
     public string title;
+    public string label;
     public string info;
 }
 
@@ -53,12 +54,12 @@ public class MissionManager : MonoBehaviour
 
     public void OnTargetFound(string missionCode)
     {
-        if(missionCode == nowMission.code)
+        if (missionCode == nowMission.code)
         {
             // 아이콘 회전
 
             // Resources 폴더에서 프리팹 불러오기
-            GameObject panelPrefab = Resources.Load<GameObject>("MissionPanels/"+nowMission.code);
+            GameObject panelPrefab = Resources.Load<GameObject>("MissionPanels/" + nowMission.code);
 
             if (panelPrefab != null)
             {

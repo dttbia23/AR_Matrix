@@ -606,6 +606,7 @@ MonoBehaviour:
   nowMission:
     code: 
     title: 
+    label: 
     info: 
   panelParentTransform: {fileID: 1348240798}
 --- !u!4 &716544745

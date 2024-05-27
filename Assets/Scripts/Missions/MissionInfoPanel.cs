@@ -13,7 +13,7 @@ public class MissionInfoPanel : MonoBehaviour
     private void Start()
     {
         mission = missionManager.nowMission;
-        if(mission == null)
+        if (mission == null)
         {
             Debug.Log("now mission is null");
         }
@@ -30,5 +30,5 @@ public class MissionInfoPanel : MonoBehaviour
         text.text = mission.info;
     }
 
-    
+
 }
