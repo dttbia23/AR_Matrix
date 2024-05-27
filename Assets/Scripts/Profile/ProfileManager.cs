@@ -36,7 +36,7 @@ public class ProfileManager : MonoBehaviour
 
     public void profileInfo()
     {
-        profileInfoTxt.text = string.Format(profileInfoFormat, GameManager.Instance.playerData.status.grade);
+        profileInfoTxt.text = string.Format(profileInfoFormat, GameManager.Instance.playerData.status.Grade);
 
     }
 
@@ -44,9 +44,9 @@ public class ProfileManager : MonoBehaviour
     public void SetStatusProgressBar()
     {
         //status 수치 반영
-        healthProgressBar.value = GameManager.Instance.playerData.status.health;
-        attractivenessProgressBar.value = GameManager.Instance.playerData.status.attractiveness;
-        intelligenceProgressBar.value = GameManager.Instance.playerData.status.intelligence;
+        healthProgressBar.value = GameManager.Instance.playerData.status.Health;
+        attractivenessProgressBar.value = GameManager.Instance.playerData.status.Attractiveness;
+        intelligenceProgressBar.value = GameManager.Instance.playerData.status.Intelligence;
     }
 
     public void RefreshUI()
