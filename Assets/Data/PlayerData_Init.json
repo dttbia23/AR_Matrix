@@ -1,0 +1,14 @@
+{
+  "status": {
+    "grade": 1,
+    "intelligence": 0,
+    "attractiveness": 0,
+    "health": 100
+  },
+  "clearMissionList": {
+    "1학년": [],
+    "2학년": [],
+    "3학년": [],
+    "4학년": []
+  }
+}

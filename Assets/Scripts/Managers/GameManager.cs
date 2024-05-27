@@ -11,6 +11,19 @@ public class Status
     public int attractiveness;
     public int health;
 }
+[Serializable]
+public struct missionList
+{
+    //clear한 미션 이름을 담는 배열
+    public List<string> missions;
+}
+[Serializable]
+public class PlayerData
+{
+    public Status status;
+    public Dictionary<string, missionList> clearMissionList;
+}
+
 
 public class GameManager : MonoBehaviour
 {
@@ -48,7 +61,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public string nowMissionCode; // 현재 미션 정보
-    public Status playerStatus;
+    public PlayerData playerData;
 
 
     /// <summary>
@@ -67,20 +80,20 @@ public class GameManager : MonoBehaviour
     /// <param name="num"></param>
     public void ChangeGrade(int num)
     {
-        playerStatus.grade = num;
+        playerData.status.grade = num;
     }
 
     public void IntelligenceStatusUpDown(int num)
     {
-        playerStatus.intelligence += num;
+        playerData.status.intelligence += num;
     }
     public void AttractivenessStatusUpDown(int num)
     {
-        playerStatus.attractiveness += num;
+        playerData.status.attractiveness += num;
     }
     public void HealthStatusUpDown(int num)
     {
-        playerStatus.health += num;
+        playerData.status.health += num;
     }
     #endregion
 }
