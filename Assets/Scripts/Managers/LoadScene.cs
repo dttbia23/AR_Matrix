@@ -34,7 +34,7 @@ public class LoadScene : MonoBehaviour
     /// </summary>
     public void SceneChangeToPreviousScene()
     {
-        if(previousSceneName == null || previousSceneName == "")
+        if (previousSceneName == null || previousSceneName == "")
         {
             Debug.LogError("There is no previous scene");
         }

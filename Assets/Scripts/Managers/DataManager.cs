@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 public static class DataManager
 {
     public static string filePath;
+    public static string playerDataFile = "PlayerData.json";
+    public static string playerDataInitFile = "PlayerData_Init.json";
     public static void Save()
     {
 
@@ -26,7 +28,7 @@ public static class DataManager
         //직렬화
         string toJsonData = JsonConvert.SerializeObject(GameManager.Instance.playerData);
 
-        filePath = Path.Combine(Application.persistentDataPath, "PlayerData.json");
+        filePath = Path.Combine(Application.persistentDataPath, playerDataFile);
 
         File.WriteAllText(filePath, toJsonData);
         Debug.Log($"{filePath}에 playerData 저장 완료");
@@ -36,7 +38,7 @@ public static class DataManager
 
     public static void LoadPlayerData()
     {
-        filePath = Path.Combine(Application.persistentDataPath, "PlayerData.json");
+        filePath = Path.Combine(Application.persistentDataPath, playerDataFile);
 
         if (File.Exists(filePath))
         {
@@ -46,16 +48,17 @@ public static class DataManager
         }
         else
         {
-            Debug.Log($"Can't find playerData : {filePath}");
+            Debug.Log($"Can't find playerData : {filePath} -> InitializePlayerData() 호출");
+            InitializePlayerData();
         }
     }
 
     public static void InitializePlayerData()
     {
-        string initFilePath = Path.Combine(Application.dataPath, "Data", "PlayerData_Init.json");
-        if (File.Exists(filePath))
+        string initFilePath = Path.Combine(Application.dataPath, "Data", playerDataInitFile);
+        if (File.Exists(initFilePath))
         {
-            string jsonString = File.ReadAllText(filePath);
+            string jsonString = File.ReadAllText(initFilePath);
             //객체 역직렬화 직접 불가능. 라이브러리 사용
             GameManager.Instance.playerData = JsonConvert.DeserializeObject<PlayerData>(jsonString);
 
@@ -69,6 +72,14 @@ public static class DataManager
             Debug.Log($"Can't find init file : {initFilePath}");
         }
 
+    }
+
+    public static void Reset()
+    {
+        filePath = Path.Combine(Application.persistentDataPath, playerDataFile);
+        File.Delete(filePath);
+
+        InitializePlayerData();
     }
 
 }
