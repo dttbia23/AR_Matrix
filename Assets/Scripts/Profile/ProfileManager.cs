@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ProfileManager : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class ProfileManager : MonoBehaviour
 
 
     [Header("Status")]
-    [SerializeField] private GameObject status1;
+    [SerializeField] private Slider healthProgressBar;
+    [SerializeField] private Slider attractivenessProgressBar;
+    [SerializeField] private Slider intelligenceProgressBar;
 
 
     private void Awake()
@@ -26,7 +29,14 @@ public class ProfileManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //profile info text 설정(학년 반영)
         profileInfoTxt.text = string.Format(profileInfoFormat, GameManager.Instance.playerData.status.grade);
+
+        //status 수치 반영
+        healthProgressBar.value = GameManager.Instance.playerData.status.health;
+        attractivenessProgressBar.value = GameManager.Instance.playerData.status.attractiveness;
+        intelligenceProgressBar.value = GameManager.Instance.playerData.status.intelligence;
+
     }
 
 }

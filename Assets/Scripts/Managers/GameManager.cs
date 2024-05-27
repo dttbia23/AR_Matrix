@@ -12,12 +12,17 @@ public class Status
     public int health;
 }
 [Serializable]
+public struct missionList
+{
+    //clear한 미션 이름을 담는 배열
+    public List<string> missions;
+}
+[Serializable]
 public class PlayerData
 {
     public Status status;
-    public List<string> clearMisionList;
+    public Dictionary<string, missionList> clearMissionList;
 }
-
 
 
 public class GameManager : MonoBehaviour
