@@ -29,13 +29,31 @@ public class ProfileManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //profile info text 설정(학년 반영)
+        RefreshUI();
+
+
+    }
+
+    public void profileInfo()
+    {
         profileInfoTxt.text = string.Format(profileInfoFormat, GameManager.Instance.playerData.status.grade);
 
+    }
+
+
+    public void SetStatusProgressBar()
+    {
         //status 수치 반영
         healthProgressBar.value = GameManager.Instance.playerData.status.health;
         attractivenessProgressBar.value = GameManager.Instance.playerData.status.attractiveness;
         intelligenceProgressBar.value = GameManager.Instance.playerData.status.intelligence;
+    }
+
+    public void RefreshUI()
+    {
+        profileInfo();
+        //profile info text 설정(학년 반영)
+        SetStatusProgressBar();
 
     }
 
