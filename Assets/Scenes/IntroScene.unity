@@ -180,10 +180,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB098, \uCEF4\uD4E8\uD130\uACF5\uD559\uACFC 20\uD559\uBC88 \uAE40\uD654\uC5F0.\n\uC624\uB298\uC740
-    \uAE30\uB2E4\uB9AC\uACE0 \uAE30\uB2E4\uB9AC\uB358 \uC878\uC5C5\uB0A0!\n\uD559\uAD50\uB97C
-    5\uB144\uB3D9\uC548\uC774\uB098 \uB2E4\uB154\uC73C\uB2C8...\n\uC774\uC81C\uB294
-    \uC815\uB9D0 \uC878\uC5C5\uD560 \uB54C\uAC00 \uB410\uC5B4!\n\uC2E0\uB09C\uB2E4~"
+  m_text: "\uB098, \uCEF4\uD4E8\uD130\uACF5\uD559\uACFC 20\uD559\uBC88 \uAE40\uD654\uC5F0.
+    \uC624\uB298\uC740 \uAE30\uB2E4\uB9AC\uACE0 \uAE30\uB2E4\uB9AC\uB358 \uC878\uC5C5\uB0A0!
+    \uD559\uAD50\uB97C 5\uB144\uB3D9\uC548\uC774\uB098 \uB2E4\uB154\uC73C\uB2C8...
+    \uC774\uC81C\uB294 \uC815\uB9D0 \uC878\uC5C5\uD560 \uB54C\uAC00 \uB410\uC5B4!
+    \uC2E0\uB09C\uB2E4~"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6da1b98956e7f804cbbfec253b977cf4, type: 2}
   m_sharedMaterial: {fileID: -2055731747450391665, guid: 6da1b98956e7f804cbbfec253b977cf4, type: 2}
@@ -353,7 +354,8 @@ GameObject:
   - component: {fileID: 359536981}
   - component: {fileID: 359536984}
   - component: {fileID: 359536983}
-  - component: {fileID: 359536982}
+  - component: {fileID: 359536985}
+  - component: {fileID: 359536986}
   m_Layer: 5
   m_Name: TalkBubble
   m_TagString: Untagged
@@ -460,20 +462,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &359536982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359536976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69d5fbdf61b5e0c448e0d9f071838dcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeImage: {fileID: 1298818510}
-  fadeSpeed: 3
 --- !u!114 &359536983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,10 +486,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2731bc6f17ca81a4ab4fd82836f2a0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textScripts: {fileID: 17816094}
-  dialogueImage: {fileID: 0}
-  fadeController: {fileID: 359536982}
-  dialogueImages: []
+  fadeController: {fileID: 359536986}
+  scriptText: {fileID: 17816094}
+  dialogueLines:
+  - "\uADF8\uB7F0\uB370 \uC774\uAC8C \uBB34\uC2A8 \uC77C\uC774\uC57C! \uCC44\uD50C,
+    \uD544\uC218\uAD50\uC591, \uD544\uC218\uC804\uACF5, \uC601\uC5B4 \uC131\uC801,
+    \uC878\uC5C5 \uC2DC\uD5D8 \uB4F1\uB4F1 \uC774\uD654\uC5EC\uC790\uB300\uD559\uAD50
+    \uCEF4\uD4E8\uD130\uACF5\uD559\uACFC \uD559\uC0DD\uC774\uB77C\uBA74 \uAC16\uCDB0\uC57C\uD560
+    \uC878\uC5C5\uC694\uAC74\uC744 \uB0B4\uAC00 \uBBF8\uCDA9\uC871\uD588\uB2E4\uAD6C?!
+    \uADF8\uB7FC \uB0B4\uAC00 \uC878\uC5C5\uC744 \uBABB\uD55C\uB2E4\uAD6C?!! "
+  - "\uC81C\uBC1C...1\uD559\uB144\uC73C\uB85C \uB3CC\uC544\uAC08 \uC218 \uC788\uB2E4\uBA74...\uBABB\uB4E4\uC740
+    \uAC15\uC758\uB3C4 \uB4E3\uACE0, \uC2DC\uD5D8\uB3C4 \uCE58\uACE0, \uC878\uC5C5
+    \uC694\uAC74\uC744 \uB2E4 \uCC44\uC6B0\uBA74\uC11C \uC54C\uCC28\uAC8C \uD559\uAD50
+    \uC0DD\uD65C\uC744 \uC990\uAE38\uD150\uB370...! "
+  - "\uC5B4, \uADF8\uB7F0\uB370 \uC800 \uBE5B\uC740 \uBB50\uC9C0?"
+  currentLine: 0
+--- !u!114 &359536985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359536976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 359536978}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 359536984}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: DisplayNextLine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &359536986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359536976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d5fbdf61b5e0c448e0d9f071838dcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeImage: {fileID: 1298818510}
+  fadeSpeed: 3
 --- !u!1 &492820149
 GameObject:
   m_ObjectHideFlags: 0
