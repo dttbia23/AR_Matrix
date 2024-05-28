@@ -165,15 +165,13 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            playerData = new PlayerData();
+            Debug.Log("GameManager Awake");
+            DataManager.LoadPlayerData();
             DontDestroyOnLoad(this.gameObject);
         }
         else
             Destroy(gameObject);
-
-
-        playerData = new PlayerData();
-        Debug.Log("GameManager Awake");
-        DataManager.LoadPlayerData();
     }
     #endregion
 
