@@ -11,7 +11,7 @@ public static class DataManager
 {
     public static string filePath;
     public static string playerDataFile = "PlayerData.json";
-    public static string playerDataInitFile = "PlayerData_Init.json";
+    public static string playerDataInitFile = "PlayerData_Init";
     public static void Save()
     {
 
@@ -56,21 +56,15 @@ public static class DataManager
 
     public static void InitializePlayerData()
     {
-        string initFilePath = Path.Combine(Application.dataPath, "Data", playerDataInitFile);
-        if (File.Exists(initFilePath))
+        TextAsset jsonFile = Resources.Load<TextAsset>(playerDataInitFile);
+        if (jsonFile != null)
         {
-            string jsonString = File.ReadAllText(initFilePath);
-            //객체 역직렬화 직접 불가능. 라이브러리 사용
-            GameManager.Instance.playerData = JsonConvert.DeserializeObject<PlayerData>(jsonString);
-
-
-            //장치에 저장
+            GameManager.Instance.playerData = JsonConvert.DeserializeObject<PlayerData>(jsonFile.text);
             SavePlayerData();
-
         }
         else
         {
-            Debug.Log($"Can't find init file : {initFilePath}");
+            Debug.Log($"Can't find init file : {playerDataInitFile}");
         }
 
     }
