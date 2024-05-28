@@ -23,15 +23,13 @@ public class ProfileManager : MonoBehaviour
 
     private void Awake()
     {
-        DataManager.LoadPlayerData();
+        //DataManager.LoadPlayerData(); // 재실행 시 오류로 주석처리
     }
 
     // Start is called before the first frame update
     void Start()
     {
         RefreshUI();
-
-
     }
     /// <summary>
     /// 프로필 정보 업데이트(현재 학년 반영)
